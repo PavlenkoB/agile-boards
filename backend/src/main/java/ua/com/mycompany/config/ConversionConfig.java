@@ -14,11 +14,11 @@ import java.util.Set;
  * Date: 27.04.2018
  * Project: agile-boards
  */
-/*@Configuration
+@Configuration
 @ComponentScan("ua.com.mycompany.converter")
 public class ConversionConfig {
     @Autowired
     public void registerConverters(Set<Converter<?, ?>> converters, GenericConversionService conversionService) {
         ConversionServiceFactory.registerConverters(converters, conversionService);
     }
-}*/
+}

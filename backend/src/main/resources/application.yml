@@ -3,7 +3,7 @@ server:
 spring:
   data:
     mongodb:
-      database: prod_db
+      database: boards_db
       uri: mongodb://localhost:27017
 
 ---
