@@ -1,0 +1,5 @@
+Task
+*id(Long)
+*name(string)
+*description(string)
+*order(Long)
