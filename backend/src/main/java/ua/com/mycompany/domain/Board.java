@@ -23,10 +23,10 @@ public class Board implements Serializable {
     @Id
     @Field(value = "id")
     private Long id;
-    @Field(value = "name")
-    private String name;
     @Field(value = "order")
     private Long order;
+    @Field(value = "name")
+    private String name;
 
     @Override
     public int hashCode() {

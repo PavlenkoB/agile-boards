@@ -16,8 +16,9 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BoardDto implements Serializable {
+public class TaskDto implements Serializable {
     private Long id;
-    private Long order;
+    private Long boardId;
     private String name;
+    private String description;
 }
