@@ -23,14 +23,14 @@ public class Task implements Serializable, Comparable<Task> {
     @Id
     @Field(value = "id")
     private Long id;
+    @Field(value = "order")
+    private Long order;
     @Field(value = "boardId")
     private Long boardId;
     @Field(value = "name")
     private String name;
     @Field(value = "description")
     private String description;
-    @Field(value = "order")
-    private Long order;
 
     @Override
     public boolean equals(Object o) {
@@ -38,6 +38,7 @@ public class Task implements Serializable, Comparable<Task> {
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
         return Objects.equals(id, task.id) &&
+                Objects.equals(order, task.order) &&
                 Objects.equals(boardId, task.boardId) &&
                 Objects.equals(name, task.name) &&
                 Objects.equals(description, task.description);

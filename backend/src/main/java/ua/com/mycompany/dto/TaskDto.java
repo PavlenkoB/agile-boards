@@ -19,6 +19,7 @@ import java.io.Serializable;
 public class TaskDto implements Serializable {
     private Long id;
     private Long boardId;
+    private Long order;
     private String name;
     private String description;
 }
