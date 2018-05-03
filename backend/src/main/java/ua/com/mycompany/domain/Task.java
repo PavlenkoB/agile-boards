@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -18,7 +19,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Task {
+public class Task implements Serializable, Comparable<Task> {
     @Id
     @Field(value = "id")
     private Long id;
@@ -28,8 +29,8 @@ public class Task {
     private String name;
     @Field(value = "description")
     private String description;
-    /*@Field(value = "order")
-    private String order;*/
+    @Field(value = "order")
+    private Long order;
 
     @Override
     public boolean equals(Object o) {
@@ -45,5 +46,17 @@ public class Task {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public int compareTo(Task task) {
+        if (this.getOrder().equals(task.getOrder())) {
+            return 0;
+        }
+        if (this.getOrder() < task.getOrder()) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 }

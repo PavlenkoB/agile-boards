@@ -19,7 +19,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Board implements Serializable {
+public class Board implements Serializable, Comparable<Board> {
     @Id
     @Field(value = "id")
     private Long id;
@@ -41,5 +41,17 @@ public class Board implements Serializable {
         return Objects.equals(id, board.id) &&
                 Objects.equals(name, board.name) &&
                 Objects.equals(order, board.order);
+    }
+
+    @Override
+    public int compareTo(Board board) {
+        if (this.getOrder().equals(board.getOrder())) {
+            return 0;
+        }
+        if (this.getOrder() < board.getOrder()) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 }
