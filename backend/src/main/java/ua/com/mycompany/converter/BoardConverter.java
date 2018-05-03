@@ -16,8 +16,8 @@ public class BoardConverter implements Converter<Board, BoardDto> {
     public BoardDto convert(Board board) {
         BoardDto boardDto = new BoardDto();
         boardDto.setId(board.getId());
-        boardDto.setName(board.getName());
         boardDto.setOrder(board.getOrder());
+        boardDto.setName(board.getName());
         return boardDto;
     }
 }

@@ -13,15 +13,15 @@ import ua.com.mycompany.dto.BoardDto;
 @Service
 public class BoardDtoConverter implements Converter<BoardDto, Board> {
     @Override
-    public Board convert(BoardDto dto) {
+    public Board convert(BoardDto boardDto) {
         Board board = new Board();
         if (board.getId() != null) {
-            board.setId(dto.getId());
+            board.setId(boardDto.getId());
         }
-        board.setName(dto.getName());
-        if (board.getId() != null) {
-            board.setOrder(dto.getOrder());
+        if (board.getOrder() != null) {
+            board.setOrder(boardDto.getOrder());
         }
+        board.setName(boardDto.getName());
         return board;
     }
 }
