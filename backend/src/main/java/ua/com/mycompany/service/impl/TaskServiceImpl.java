@@ -1,6 +1,7 @@
 package ua.com.mycompany.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ua.com.mycompany.dao.TaskRepository;
 import ua.com.mycompany.domain.Task;
 import ua.com.mycompany.service.TaskService;
@@ -13,6 +14,7 @@ import java.util.Optional;
  * Date: 03.05.2018
  * Project: agile-boards
  */
+@Service
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
 

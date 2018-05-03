@@ -1,6 +1,7 @@
 package ua.com.mycompany.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ua.com.mycompany.dao.BoardRepository;
 import ua.com.mycompany.domain.Board;
 import ua.com.mycompany.service.BoardService;
@@ -13,6 +14,7 @@ import java.util.Optional;
  * Date: 03.05.2018
  * Project: agile-boards
  */
+@Service
 public class BoardServiceImpl implements BoardService {
     private final BoardRepository boardRepository;
 
