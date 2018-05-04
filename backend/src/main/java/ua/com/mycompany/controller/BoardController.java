@@ -59,8 +59,8 @@ public class BoardController {
         if (!board.getId().equals(id)) {
             throw new RestException("Board id and id in url not same", HttpStatus.BAD_REQUEST);
         }
-        Board createdBoard = boardService.update(board);
-        return conversionService.convert(createdBoard, BoardDto.class);
+        Board updatedBoard = boardService.update(board);
+        return conversionService.convert(updatedBoard, BoardDto.class);
     }
 
     @GetMapping("/{id}")
