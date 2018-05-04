@@ -16,8 +16,12 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  */
 @Service
 public class NextSequenceService {
+    private final MongoOperations mongo;
+
     @Autowired
-    private MongoOperations mongo;
+    public NextSequenceService(MongoOperations mongo) {
+        this.mongo = mongo;
+    }
 
     public long getNextSequence(String seqName) {
         CustomSequences counter = mongo.findAndModify(

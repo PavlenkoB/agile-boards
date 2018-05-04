@@ -9,8 +9,12 @@ import ua.com.mycompany.service.BoardService;
 
 @SpringBootApplication
 public class Application implements ApplicationRunner {
+    private final BoardService boardService;
+
     @Autowired
-    private BoardService boardService;
+    public Application(BoardService boardService) {
+        this.boardService = boardService;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
