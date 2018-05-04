@@ -30,6 +30,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Board create(Board board) {
+        //todo generate new ID
         return boardRepository.save(board);
     }
 

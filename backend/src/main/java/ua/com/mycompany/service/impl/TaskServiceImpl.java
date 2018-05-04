@@ -30,6 +30,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task create(Task task) {
+        //todo generate new ID
         return taskRepository.save(task);
     }
 
