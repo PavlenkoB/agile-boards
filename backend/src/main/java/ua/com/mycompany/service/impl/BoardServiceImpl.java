@@ -35,6 +35,9 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public Board create(Board board) {
         long nextId = this.nextSequenceService.getNextSequence(BoardServiceImpl.sequenceName);
+        //todo maybe not right
+        long newOrder = boardRepository.count();
+        board.setOrder(newOrder);
         board.setId(nextId);
         return boardRepository.save(board);
     }

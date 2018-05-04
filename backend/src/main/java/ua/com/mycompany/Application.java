@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import ua.com.mycompany.domain.Board;
 import ua.com.mycompany.service.BoardService;
 
 @SpringBootApplication
@@ -22,6 +23,6 @@ public class Application implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-//        boardService.create(new Board(1L, 0L, "test"));
+        boardService.create(new Board(1L, 0L, "test"));
     }
 }

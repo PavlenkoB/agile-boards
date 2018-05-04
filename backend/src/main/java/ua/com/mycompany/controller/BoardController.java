@@ -54,11 +54,11 @@ public class BoardController {
     @ResponseStatus(HttpStatus.OK)
     public BoardDto updateBoard(@Valid @RequestBody BoardDto boardDto,
                                 @PathVariable("id") Long id) {
+        this.boardWithIdIsExist(id);
         Board board = conversionService.convert(boardDto, Board.class);
         if (!board.getId().equals(id)) {
             throw new RestException("Board id and id in url not same", HttpStatus.BAD_REQUEST);
         }
-        this.boardWithIdIsExist(id);
         Board createdBoard = boardService.update(board);
         return conversionService.convert(createdBoard, BoardDto.class);
     }
