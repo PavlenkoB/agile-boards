@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "ember-cli": "^3.1.3"
+  },
+  "devDependencies": {
+    "webpack": "^3.11.0",
+    "webpack-dev-middleware": "^2.0.6",
+    "webpack-dev-server": "^2.11.2",
+    "webpack-hot-middleware": "^2.22.1",
+    "html-webpack-plugin": "^2.30.1",
+    "http-proxy-middleware": "^0.17.4",
+    "opener": "^1.4.3"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "start_old": "webpack",
+    "build": "webpack -p",
+    "watch": "webpack --watch",
+    "bundle": "cross-env NODE_ENV=production webpack -p --optimize-dedupe",
+    "test2": "cross-env NODE_ENV=test mocha"
+  }
+}
