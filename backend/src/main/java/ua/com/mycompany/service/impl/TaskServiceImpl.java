@@ -33,6 +33,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public List<Task> getAllTasksForBoard(Long boardId) {
+        return taskRepository.findByBoardId(boardId);
+    }
+
+    @Override
     public Task create(Task task) {
         long nextId = this.nextSequenceService.getNextSequence(TaskServiceImpl.sequenceName);
         task.setId(nextId);

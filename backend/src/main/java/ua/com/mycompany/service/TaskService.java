@@ -13,6 +13,8 @@ import java.util.Optional;
 public interface TaskService {
     List<Task> getAll();
 
+    List<Task> getAllTasksForBoard(Long boardId);
+
     Task create(Task task);
 
     Optional<Task> findById(Long id);

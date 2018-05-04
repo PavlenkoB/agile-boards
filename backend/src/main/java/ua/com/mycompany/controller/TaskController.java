@@ -40,6 +40,16 @@ public class TaskController {
         return taskDtoList;
     }
 
+    @GetMapping("/forBoard/{boardId}")
+    public List<TaskDto> getAllTasksForBoard(@PathVariable("boardId") Long boardId) {
+        List<Task> taskList = taskService.getAllTasksForBoard(boardId);
+        List<TaskDto> taskDtoList = taskList
+                .stream()
+                .map(task -> conversionService.convert(task, TaskDto.class))
+                .collect(Collectors.toList());
+        return taskDtoList;
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public TaskDto createTask(@RequestBody TaskDto taskDto) {
