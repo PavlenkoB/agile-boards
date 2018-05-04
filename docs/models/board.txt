@@ -1,4 +1,4 @@
 Board
 *id(Long)
-*name(string)
 *order(Long)
+*name(string)

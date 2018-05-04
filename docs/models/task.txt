@@ -1,5 +1,6 @@
 Task
 *id(Long)
+*boardId(Long)
+*order(Long)
 *name(string)
 *description(string)
-*order(Long)
