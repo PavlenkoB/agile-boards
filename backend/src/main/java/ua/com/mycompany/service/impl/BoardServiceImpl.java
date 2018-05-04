@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ua.com.mycompany.dao.BoardRepository;
 import ua.com.mycompany.domain.Board;
 import ua.com.mycompany.service.BoardService;
+import ua.com.mycompany.util.NextSequenceService;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,11 +17,14 @@ import java.util.Optional;
  */
 @Service
 public class BoardServiceImpl implements BoardService {
+    private static String sequenceName = "boardIdSequence";
     private final BoardRepository boardRepository;
+    private final NextSequenceService nextSequenceService;
 
     @Autowired
-    public BoardServiceImpl(BoardRepository boardRepository) {
+    public BoardServiceImpl(BoardRepository boardRepository, NextSequenceService nextSequenceService) {
         this.boardRepository = boardRepository;
+        this.nextSequenceService = nextSequenceService;
     }
 
     @Override
@@ -30,7 +34,8 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Board create(Board board) {
-        //todo generate new ID
+        long nextId = this.nextSequenceService.getNextSequence(BoardServiceImpl.sequenceName);
+        board.setId(nextId);
         return boardRepository.save(board);
     }
 

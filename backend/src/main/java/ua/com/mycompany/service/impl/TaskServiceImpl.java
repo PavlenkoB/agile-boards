@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ua.com.mycompany.dao.TaskRepository;
 import ua.com.mycompany.domain.Task;
 import ua.com.mycompany.service.TaskService;
+import ua.com.mycompany.util.NextSequenceService;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,11 +17,14 @@ import java.util.Optional;
  */
 @Service
 public class TaskServiceImpl implements TaskService {
+    private static String sequenceName = "taskIdSequence";
     private final TaskRepository taskRepository;
+    private final NextSequenceService nextSequenceService;
 
     @Autowired
-    public TaskServiceImpl(TaskRepository taskRepository) {
+    public TaskServiceImpl(TaskRepository taskRepository, NextSequenceService nextSequenceService) {
         this.taskRepository = taskRepository;
+        this.nextSequenceService = nextSequenceService;
     }
 
     @Override
@@ -30,7 +34,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task create(Task task) {
-        //todo generate new ID
+        long nextId = this.nextSequenceService.getNextSequence(TaskServiceImpl.sequenceName);
+        task.setId(nextId);
         return taskRepository.save(task);
     }
 
