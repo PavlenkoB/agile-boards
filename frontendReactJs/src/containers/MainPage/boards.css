@@ -1,0 +1,8 @@
+.board-body {
+    float: left;
+    min-width: 200px;
+    background-color: #d4e2e1;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 3px;
+}

@@ -5,21 +5,31 @@ import * as actions from "./actions";
 
 import Board from './dumpComponent/Board';
 
+import './boards.css';
+
 export class MainPage extends Component {
     componentWillMount() {
         this.props.actions.getBoardsList();
     }
 
+    componentNeedUpdate(nextState) {
+        return true;
+    }
+
     render() {
-        return <div>
-            qwesad
+        console.log(this.props);
+        return <div className="main-page">
+            Some data
+            {this.props.pageData.boards.map((board, index) =>
+                <Board board={board} key={index}/>
+            )}
         </div>
     };
 };
 
 function mapStateToProps(state) {
     return {
-        pageData: state.AdministrationReducer
+        pageData: state.MainReduser
     }
 }
 

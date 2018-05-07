@@ -1,7 +1,7 @@
 import * as con from "./constants";
 
 const initState = {
-    boards: null
+    boards: []
 };
 
 export default function MainReduser(state = initState, action) {
