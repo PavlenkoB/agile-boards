@@ -20,9 +20,11 @@ export class MainPage extends Component {
         console.log(this.props);
         return <div className="main-page">
             Some data
-            {this.props.pageData.boards.map((board, index) =>
-                <Board board={board} key={index}/>
-            )}
+            <div className="boardsContainer">
+                {this.props.pageData.boards.map((board, index) =>
+                    <Board board={board} key={index}/>
+                )}
+            </div>
         </div>
     };
 };

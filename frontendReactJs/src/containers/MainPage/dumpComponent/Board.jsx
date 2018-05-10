@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 export class Board extends Component {
 
@@ -18,7 +19,13 @@ export class Board extends Component {
 
     render() {
         return <div className="board-body">
-            BoardData
+            <div className="actions">
+                <button className="moveLeft">left</button>
+                <button className="deleteBoard">
+                    <FontAwesomeIcon icon="coffee"/>
+                </button>
+                <button className="moveRight">right</button>
+            </div>
             <div>
                 <p>
                     <b>Id:</b>{this.board.id}
