@@ -1,5 +1,6 @@
 package ua.com.mycompany.service;
 
+import org.springframework.lang.NonNull;
 import ua.com.mycompany.domain.Board;
 
 import java.util.List;
@@ -11,12 +12,16 @@ import java.util.Optional;
  * Project: agile-boards
  */
 public interface BoardService {
+    @NonNull
     List<Board> getAll();
 
+    @NonNull
     Board create(Board board);
 
+    @NonNull
     Optional<Board> findById(Long id);
 
+    @NonNull
     Board update(Board board);
 
     void deleteById(Long id);
