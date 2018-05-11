@@ -24,5 +24,7 @@ public class Application implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         boardService.create(new Board(1L, 0L, "test"));
+
+
     }
 }

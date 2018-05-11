@@ -15,10 +15,10 @@ public class BoardDtoConverter implements Converter<BoardDto, Board> {
     @Override
     public Board convert(BoardDto boardDto) {
         Board board = new Board();
-        if (board.getId() != null) {
+        if (boardDto.getId() != null) {
             board.setId(boardDto.getId());
         }
-        if (board.getOrder() != null) {
+        if (boardDto.getOrder() != null) {
             board.setOrder(boardDto.getOrder());
         }
         board.setName(boardDto.getName());

@@ -44,7 +44,7 @@ public class BoardController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BoardDto createBoard(@RequestBody BoardDto boardDto) {
+    public BoardDto createBoard(@RequestBody @Valid BoardDto boardDto) {
         Board board = conversionService.convert(boardDto, Board.class);
         Board createdBoard = boardService.create(board);
         return conversionService.convert(createdBoard, BoardDto.class);
@@ -52,7 +52,7 @@ public class BoardController {
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BoardDto updateBoard(@Valid @RequestBody BoardDto boardDto,
+    public BoardDto updateBoard(@RequestBody @Valid BoardDto boardDto,
                                 @PathVariable("id") Long id) {
         this.boardWithIdIsExist(id);
         Board board = conversionService.convert(boardDto, Board.class);

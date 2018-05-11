@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -18,6 +21,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class BoardDto implements Serializable {
     private Long id;
+    @NotNull
+    @Min(0)
     private Long order;
+    @NotNull
+    @NotEmpty
     private String name;
 }
