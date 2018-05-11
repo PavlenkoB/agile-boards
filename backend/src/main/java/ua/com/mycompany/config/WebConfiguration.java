@@ -1,9 +1,11 @@
 package ua.com.mycompany.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import ua.com.mycompany.formater.BoardFormatter;
 
 /**
  * Creator: Pavlenko Bohdan
@@ -13,6 +15,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableWebMvc
 public class WebConfiguration extends WebMvcConfigurerAdapter {
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        BoardFormatter boardFormatter = new BoardFormatter();
+        registry.addFormatter(boardFormatter);
+        super.addFormatters(registry);
+    }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")
