@@ -15,7 +15,6 @@ public class TaskDtoConverter implements Converter<TaskDto, Task> {
     @Override
     public Task convert(TaskDto taskDto) {
         Task task = new Task();
-
         if (taskDto.getId() != null) {
             task.setId(taskDto.getId());
         }
