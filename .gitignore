@@ -34,5 +34,5 @@ hs_err_pid*
 out
 gen
 
-frontendReactJS/node_modules
-frontendEmberJs/node_modules
+frontendReactJS/node_modules/
+frontendEmberJs/node_modules/
