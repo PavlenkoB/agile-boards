@@ -22,7 +22,7 @@ import java.io.Serializable;
 public class BoardDto implements Serializable {
     private Long id;
     @NotNull
-    @Min(0)
+    @Min(value = 0, message = "Cant be lover zero")
     private Long order;
     @NotNull
     @NotEmpty

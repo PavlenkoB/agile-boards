@@ -31,7 +31,7 @@ public class Application implements ApplicationRunner {
     }
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         boardService.create(new Board(1L, 0L, "test"));
         this.haveConverter(String.class, Colors.class);
         this.haveConverter(String.class, Stikers.class);
