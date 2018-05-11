@@ -7,6 +7,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
 import ua.com.mycompany.converter.TaskConverter;
 import ua.com.mycompany.domain.Board;
 import ua.com.mycompany.dto.BoardDto;
@@ -37,7 +40,7 @@ public class Application implements ApplicationRunner {
         this.haveConverter(String.class, Stikers.class);
         this.haveConverter(String.class, BoardService.class);
         this.haveConverter(Board.class, BoardDto.class);
-        Colors red = this.conversionService.convert("RED", Colors.class);
+
     }
 
     private boolean haveConverter(Class src, Class target) {
