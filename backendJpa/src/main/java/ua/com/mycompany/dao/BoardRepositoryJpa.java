@@ -1,6 +1,6 @@
 package ua.com.mycompany.dao;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import ua.com.mycompany.domain.Board;
 
@@ -10,5 +10,5 @@ import ua.com.mycompany.domain.Board;
  * Project: agile-boards
  */
 @Repository
-public interface BoardRepositoryJpa extends BoardRepository, MongoRepository<Board, Long> {
+public interface BoardRepositoryJpa extends BoardRepository, CrudRepository<Board, Long> {
 }

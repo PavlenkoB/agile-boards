@@ -31,19 +31,8 @@ jar {
 
 
 dependencies {
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.8.9'
-
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-    compile("org.springframework.boot:spring-boot-starter-actuator")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-
-/**/
+    /* fro lombok*/
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.10'
-
-    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
-    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
-    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
-
-    compile("org.springframework.boot:spring-boot-devtools")
+    /*for mongo*/
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 }
