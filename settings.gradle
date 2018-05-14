@@ -1,3 +1,5 @@
 include 'backend'
+include 'backendMongo'
+include 'backendJpa'
 include 'frontendReactJs'
 include 'frontendEmberJs'
