@@ -7,14 +7,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.convert.ConversionService;
-import org.springframework.expression.Expression;
-import org.springframework.expression.ExpressionParser;
-import org.springframework.expression.spel.standard.SpelExpressionParser;
-import ua.com.mycompany.converter.TaskConverter;
 import ua.com.mycompany.domain.Board;
-import ua.com.mycompany.dto.BoardDto;
-import ua.com.mycompany.enums.Colors;
-import ua.com.mycompany.enums.Stikers;
 import ua.com.mycompany.service.BoardService;
 
 @SpringBootApplication
@@ -35,17 +28,7 @@ public class Application implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        boardService.create(new Board(1L, 0L, "test"));
-        this.haveConverter(String.class, Colors.class);
-        this.haveConverter(String.class, Stikers.class);
-        this.haveConverter(String.class, BoardService.class);
-        this.haveConverter(Board.class, BoardDto.class);
+        boardService.create(new Board(null, 0L, "test", null));
 
-    }
-
-    private boolean haveConverter(Class src, Class target) {
-        boolean canConvert = this.conversionService.canConvert(src, target);
-        log.info("Can convert from" + src.getCanonicalName() + " to " + target.getCanonicalName() + ":" + canConvert);
-        return canConvert;
     }
 }

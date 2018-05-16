@@ -2,6 +2,8 @@ package ua.com.mycompany.domain;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -19,6 +21,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@TypeAlias("Board")
 public class Board implements Serializable, Comparable<Board> {
     @Id
     @Field(value = "id")
@@ -27,6 +30,9 @@ public class Board implements Serializable, Comparable<Board> {
     private Long order;
     @Field(value = "name")
     private String name;
+    @Field
+    @Version
+    private Long version;
 
     @Override
     public int hashCode() {

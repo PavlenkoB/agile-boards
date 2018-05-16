@@ -62,11 +62,12 @@ public class TaskController {
     @ResponseStatus(HttpStatus.OK)
     public TaskDto updateTask(@RequestBody TaskDto taskDto,
                               @PathVariable("id") Long id) {
-        this.taskWithIdIsExist(id);
+        Task taskWithIdIsExist = this.taskWithIdIsExist(id);
         Task task = conversionService.convert(taskDto, Task.class);
         if (!task.getId().equals(id)) {
             throw new RestException("Task id and id in url not same", HttpStatus.BAD_REQUEST);
         }
+        task.setVersion(taskWithIdIsExist.getVersion());
         Task updatedTask = taskService.update(task);
         return conversionService.convert(updatedTask, TaskDto.class);
     }

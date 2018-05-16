@@ -2,6 +2,7 @@ package ua.com.mycompany.domain;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -23,6 +24,9 @@ public class Task implements Serializable, Comparable<Task> {
     @Id
     @Field(value = "id")
     private Long id;
+    @Version
+    @Field
+    private Long version;
     @Field(value = "order")
     private Long order;
     @Field(value = "boardId")
