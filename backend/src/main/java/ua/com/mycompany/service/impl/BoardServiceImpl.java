@@ -2,9 +2,10 @@ package ua.com.mycompany.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.com.mycompany.dao.BoardRepositoryJpa;
+import ua.com.mycompany.dao.BoardRepository;
 import ua.com.mycompany.domain.Board;
 import ua.com.mycompany.service.BoardService;
+import ua.com.mycompany.util.NextSequenceService;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,11 +18,13 @@ import java.util.Optional;
 @Service
 public class BoardServiceImpl implements BoardService {
     private static String sequenceName = "boardIdSequence";
-    private final BoardRepositoryJpa boardRepository;
+    private final BoardRepository boardRepository;
+    private final NextSequenceService nextSequenceService;
 
     @Autowired
-    public BoardServiceImpl(BoardRepositoryJpa boardRepository) {
+    public BoardServiceImpl(BoardRepository boardRepository, NextSequenceService nextSequenceService) {
         this.boardRepository = boardRepository;
+        this.nextSequenceService = nextSequenceService;
     }
 
     @Override
@@ -31,9 +34,11 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Board create(Board board) {
+        long nextId = this.nextSequenceService.getNextSequence(BoardServiceImpl.sequenceName);
         //todo maybe not right
         long newOrder = boardRepository.count();
         //board.setOrder(newOrder);
+        board.setId(nextId);
         return boardRepository.save(board);
     }
 
