@@ -1,6 +1,6 @@
 package ua.com.mycompany.dao;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import ua.com.mycompany.domain.Task;
 
@@ -12,6 +12,6 @@ import java.util.List;
  * Project: agile-boards
  */
 @Repository
-public interface TaskRepositoryJpa extends TaskRepository, CrudRepository<Task, Long> {
+public interface TaskRepositoryJpa extends TaskRepository, MongoRepository<Task, Long> {
     List<Task> findByBoardId(Long id);
 }

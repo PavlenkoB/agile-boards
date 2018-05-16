@@ -1,14 +1,14 @@
 server:
   port: 8080
 spring:
+  data:
+    mongodb:
+      database: boards_db
+      uri: mongodb://localhost:27017
   devtools:
     remote:
       restart:
         enabled: true
-  datasource:
-    password: root
-    username: root
-    url:     jdbc:mysql://localhost:3306/test_db?autoReconnect=true&useSSL=false
 
 ---
 
