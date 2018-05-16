@@ -1,3 +1,2 @@
 include 'backend'
 include 'frontendReactJs'
-include 'frontendEmberJs'
