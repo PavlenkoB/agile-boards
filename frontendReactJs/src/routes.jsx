@@ -1,14 +1,17 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
+import FontAwesome from 'react-fontawesome';
+import 'font-awesome/css/font-awesome.min.css';
 import MainPage from './containers/MainPage/';
-
-import {PAGE_PATH} from './pathCons';
 
 export default () => (
     <div>
         <BrowserRouter>
             <div>
+                <b>
+                    Boards: <FontAwesome name='trello' size="2x"/>
+                </b>
                 <div className="container-fluid">
                     <div className="header">
                     </div>
