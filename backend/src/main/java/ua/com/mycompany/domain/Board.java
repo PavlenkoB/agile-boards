@@ -37,6 +37,9 @@ public class Board implements Serializable, Comparable<Board> {
     @Version
     private Long version;
 
+    //todo try    @DBRef
+//    private List<Task> tasks;
+
     @Override
     public int hashCode() {
         return Objects.hash(id);
