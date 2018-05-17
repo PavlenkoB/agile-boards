@@ -26,10 +26,13 @@ public class Board implements Serializable, Comparable<Board> {
     @Id
     @Field(value = "id")
     private Long id;
+
     @Field(value = "order")
     private Long order;
+
     @Field(value = "name")
     private String name;
+
     @Field
     @Version
     private Long version;

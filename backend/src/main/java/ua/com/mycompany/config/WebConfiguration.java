@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import ua.com.mycompany.formater.BoardFormatter;
 
 /**
@@ -14,12 +14,12 @@ import ua.com.mycompany.formater.BoardFormatter;
  */
 @Configuration
 @EnableWebMvc
-public class WebConfiguration extends WebMvcConfigurerAdapter {
+//@EnableReactiveMongoRepositories
+public class WebConfiguration implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         BoardFormatter boardFormatter = new BoardFormatter();
         registry.addFormatter(boardFormatter);
-        super.addFormatters(registry);
     }
 
     @Override
