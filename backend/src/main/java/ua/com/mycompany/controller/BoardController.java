@@ -66,7 +66,7 @@ public class BoardController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BoardDto getBoardById(Long id) {
+    public BoardDto getBoardById(@PathVariable("id") Long id) {
         Board board = this.boardWithIdIsExist(id);
         return conversionService.convert(board, BoardDto.class);
     }
