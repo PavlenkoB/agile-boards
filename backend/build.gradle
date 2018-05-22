@@ -27,7 +27,18 @@ repositories {
 
 jar {
     baseName = "agile"
+    from('../frontendReactJs/build'){
+        into 'static'
+    }
 }
+/*
+sourceSets {
+    main{
+        resources {
+            srcDir "../frontendReactJs/build"
+        }
+    }
+}*/
 
 //
 bootJar {

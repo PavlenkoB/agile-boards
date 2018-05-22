@@ -36,4 +36,5 @@ gen
 
 frontendReactJS/node_modules/
 frontendEmberJs/node_modules/
+frontendReactJs/build
 !gradle/wrapper/*

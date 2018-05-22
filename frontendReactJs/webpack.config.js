@@ -16,24 +16,51 @@ module.exports = {
         filename: 'bundle.js'
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
         root: path.join(__dirname, 'src')
     },
     module: {
         loaders: [
             {
-                test: /\.jsx?/,
+                test: /\.jsx$/,
                 include: PATHS.source,
-                loader: 'babel-loader'
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ["es2015", "stage-0", "react"]
+                }
             },
             {
-                test: /\.js?/,
+                test: /\.js$/,
                 include: PATHS.source,
                 loader: 'babel-loader'
             },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {}
+                    }
+                ]
+            },
+            {
+                test: /\.json$/,
+                loader: 'raw-loader'
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/'
+                    }
+                }]
             }
         ]
     }

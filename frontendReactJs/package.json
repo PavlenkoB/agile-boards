@@ -31,14 +31,15 @@
     "webpack-hot-middleware": "^2.22.1",
     "html-webpack-plugin": "^2.30.1",
     "http-proxy-middleware": "^0.17.4",
-    "opener": "^1.4.3"
+    "opener": "^1.4.3",
+    "cross-env": "^5.1.5"
   },
   "scripts": {
     "start": "node server.js",
     "start_old": "webpack",
     "build": "webpack -p",
     "watch": "webpack --watch",
-    "bundle": "cross-env NODE_ENV=production webpack -p --optimize-dedupe",
+    "bundle": "cross-env NODE_ENV=production webpack --config webpack.dev.config.js -p --optimize-minimize",
     "test2": "cross-env NODE_ENV=test mocha"
   }
 }
