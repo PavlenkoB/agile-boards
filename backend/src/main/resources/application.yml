@@ -4,7 +4,6 @@ spring:
   data:
     mongodb:
       database: boards_db
-      uri: mongodb://localhost:27017
   devtools:
     remote:
       restart:
