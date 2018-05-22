@@ -29,7 +29,10 @@ jar {
     baseName = "agile"
 }
 
-
+//
+bootJar {
+    launchScript()
+}
 
 
 dependencies {
