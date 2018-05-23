@@ -39,7 +39,7 @@ task copyStatic(type: Copy) {
 }
 build.dependsOn(":frontend:bundle")
 bootJar.dependsOn(copyStatic)
-bootJar.dependsOn(build)
+//bootJar.dependsOn(build)
 //
 bootJar {
     launchScript()
