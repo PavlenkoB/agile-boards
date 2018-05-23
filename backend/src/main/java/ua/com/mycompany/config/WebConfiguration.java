@@ -14,7 +14,6 @@ import ua.com.mycompany.formater.BoardFormatter;
  */
 @Configuration
 @EnableWebMvc
-//@EnableReactiveMongoRepositories
 public class WebConfiguration implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
@@ -29,5 +28,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+
+        registry.addResourceHandler("/static/**")
+                .addResourceLocations("classpath:/static/").setCachePeriod(5);
     }
 }

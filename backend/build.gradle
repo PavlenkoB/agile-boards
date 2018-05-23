@@ -25,21 +25,22 @@ repositories {
     mavenCentral()
 }
 
-jar {
-    baseName = "agile"
-    from('../frontendReactJs/build'){
-        into 'static'
-    }
+
+task copyStatic(type: Copy) {
+    println("${projectDir}/src/main/resources")
+    from("${projectDir}/../frontend/build")
+    into("${buildDir}/resources/main/static")
 }
+build.dependsOn(":frontend:bundle")
 /*
 sourceSets {
     main{
         resources {
-            srcDir "../frontendReactJs/build"
+            srcDir "../frontendReactJs"
         }
     }
-}*/
-
+}
+*/
 //
 bootJar {
     launchScript()
@@ -52,6 +53,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('net.sourceforge.nekohtml:nekohtml')
 
     compile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.0.1"
 //    compile("io.projectreactor:reactor-core:3.1.7.RELEASE")

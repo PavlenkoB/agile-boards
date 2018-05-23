@@ -34,7 +34,7 @@ hs_err_pid*
 out
 gen
 
-frontendReactJS/node_modules/
+frontend/node_modules/
 frontendEmberJs/node_modules/
 frontendReactJs/build
 !gradle/wrapper/*
