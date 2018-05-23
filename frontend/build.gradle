@@ -31,8 +31,8 @@ task ServerStart(type: YarnTask) {
     args = ['start_server']
 }
 
+bundle.dependsOn(yarn)
 /*
 check.dependsOn(test)
-bundle.dependsOn(yarn_install)
 assemble.dependsOn(bundle)
 */

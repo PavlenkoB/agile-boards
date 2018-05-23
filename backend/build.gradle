@@ -26,21 +26,20 @@ repositories {
 }
 
 
+bootJar {
+    from('../frontend/dist') {
+        into 'static'
+    }
+}
+
 task copyStatic(type: Copy) {
     println("${projectDir}/src/main/resources")
     from("${projectDir}/../frontend/build")
     into("${buildDir}/resources/main/static")
 }
 build.dependsOn(":frontend:bundle")
-/*
-sourceSets {
-    main{
-        resources {
-            srcDir "../frontendReactJs"
-        }
-    }
-}
-*/
+bootJar.dependsOn(copyStatic)
+bootJar.dependsOn(build)
 //
 bootJar {
     launchScript()

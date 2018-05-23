@@ -31,5 +31,11 @@ public class WebConfiguration implements WebMvcConfigurer {
 
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/").setCachePeriod(5);
+
+        registry.addResourceHandler("*.js", "*.css")
+                .addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/fonts/**")
+                .addResourceLocations("classpath:/static/fonts/");
+
     }
 }
