@@ -3,7 +3,8 @@ server:
 spring:
   data:
     mongodb:
-      database: boards_db
+      repositories:
+        type: auto
   devtools:
     remote:
       restart:
