@@ -11,8 +11,11 @@ spring:
   mvc:
     view:
       prefix: /WEB-INF/views/
-
+app.build-number: qwe
+application.title: Agile-boards
+application.version: 0.1
 ---
+
 
 spring:
   profiles: test

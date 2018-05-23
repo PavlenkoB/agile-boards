@@ -1,0 +1,8 @@
+  /\_/\
+=( °w° )=
+  )   (  //
+ (__ __)//
+ App-name: ${application.title}
+ App: ${application.version}
+ Build: ${app.build-number}
+ Spring-Boot: ${spring-boot.version}
