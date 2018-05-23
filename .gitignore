@@ -35,5 +35,5 @@ out
 gen
 
 frontend/node_modules
-frontend/build
+frontend/build/
 !gradle/wrapper/*

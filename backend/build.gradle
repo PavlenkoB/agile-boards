@@ -37,10 +37,9 @@ task copyStatic(type: Copy) {
     from("${projectDir}/../frontend/build")
     into("${buildDir}/resources/main/static")
 }
-build.dependsOn(":frontend:bundle")
+copyStatic.dependsOn(":frontend:bundle")
 bootJar.dependsOn(copyStatic)
-//bootJar.dependsOn(build)
-//
+
 bootJar {
     launchScript()
 }

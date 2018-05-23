@@ -2,5 +2,5 @@
 task wrapper(type: Wrapper) {
     gradleVersion = '4.3.1'
 }
-task stage(dependsOn: ['frontend:build','backend:bootJar'])
+task stage(dependsOn: ['backend:bootJar'])
 
