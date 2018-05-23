@@ -54,7 +54,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('net.sourceforge.nekohtml:nekohtml')
 
-    compile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.0.1"
+//    compile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.0.1"
 //    compile("io.projectreactor:reactor-core:3.1.7.RELEASE")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 
