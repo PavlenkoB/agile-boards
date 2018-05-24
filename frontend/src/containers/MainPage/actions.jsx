@@ -20,6 +20,22 @@ export function getBoardsList() {
     };
 }
 
+export function deleteBoard(boardId) {
+    return dispatch => {
+        $.ajax({
+            url: '/api/board/' + boardId,
+            type: 'DELETE',
+            contentType: 'application/json',
+            dataType: 'json'
+        }).done(function () {
+            dispatch({
+                type: con.DELETE_BOARD_SUCCESS,
+            });
+            getBoardsList();
+        });
+    }
+}
+
 
 export function getTaskInfo(taskId) {
     return dispatch => {

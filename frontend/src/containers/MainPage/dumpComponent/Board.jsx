@@ -12,12 +12,21 @@ export class Board extends Component {
             name: PropTypes.string,
             order: PropTypes.number,
             tasks: PropTypes.array
-        })
+        }),
+        deleteAction: PropTypes.func
     };
 
     constructor(props) {
         super(props);
         this.board = this.props.board;
+        this.deleteFunction = this.props.deleteAction;
+        this.runDelete = this.runDelete.bind(this);
+    }
+
+    runDelete() {
+        console.log("Delete....");
+        console.log(this);
+        this.props.deleteFunction(this.board.id);
     }
 
     render() {
@@ -26,7 +35,7 @@ export class Board extends Component {
                 <button className="moveLeft">
                     <FontAwesome name="arrow-left" size="2x"/>
                 </button>
-                <button className="deleteBoard">
+                <button className="deleteBoard" onClick={this.runDelete}>
                     <FontAwesome name="trash" size="2x"/>
                 </button>
                 <button className="moveRight">

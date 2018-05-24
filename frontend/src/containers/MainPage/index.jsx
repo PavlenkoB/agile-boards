@@ -12,6 +12,12 @@ export class MainPage extends Component {
         this.props.actions.getBoardsList();
     }
 
+    deleteThisBoard(id) {
+        console.log("Delete....", id);
+        console.log("this", this);
+        // this.props.actions.deleteBoard(id);
+    }
+
     componentNeedUpdate(nextState) {
         return true;
     }
@@ -22,7 +28,7 @@ export class MainPage extends Component {
             Some data
             <div className="boardsContainer">
                 {this.props.pageData.boards.map((board, index) =>
-                    <Board board={board} key={index}/>
+                    <Board board={board} key={index} deleteAction={this.deleteThisBoard}/>
                 )}
             </div>
         </div>
