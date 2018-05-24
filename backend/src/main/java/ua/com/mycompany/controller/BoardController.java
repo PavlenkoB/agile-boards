@@ -1,5 +1,7 @@
 package ua.com.mycompany.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
@@ -8,6 +10,7 @@ import ua.com.mycompany.domain.Board;
 import ua.com.mycompany.dto.BoardDto;
 import ua.com.mycompany.exception.RestException;
 import ua.com.mycompany.service.BoardService;
+import ua.com.mycompany.service.TaskService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -20,19 +23,23 @@ import java.util.stream.Collectors;
  * Project: agile-boards
  */
 @RestController
-@RequestMapping(value = "/api/board")
+@RequestMapping(value = "/api/board", consumes = {"application/json"})
+@Api(value = "board", description = "Operations on boards")
 public class BoardController {
 
     private final BoardService boardService;
+    private final TaskService taskService;
     private final ConversionService conversionService;
 
     @Autowired
-    public BoardController(BoardService boardService, ConversionService conversionService) {
+    public BoardController(BoardService boardService, TaskService taskService, ConversionService conversionService) {
         this.boardService = boardService;
+        this.taskService = taskService;
         this.conversionService = conversionService;
     }
 
     @GetMapping
+    @ApiOperation("Get all boards")
     public List<BoardDto> getBoards() {
         List<Board> boardList = boardService.getAll();
         List<BoardDto> boardDtos = boardList
@@ -44,6 +51,7 @@ public class BoardController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation("Create board")
     public BoardDto createBoard(@RequestBody @Valid BoardDto boardDto) {
         Board board = conversionService.convert(boardDto, Board.class);
         Board createdBoard = boardService.create(board);
@@ -52,6 +60,7 @@ public class BoardController {
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @ApiOperation("Update board")
     public BoardDto updateBoard(@RequestBody @Valid BoardDto boardDto,
                                 @PathVariable("id") Long id) {
         Board boardWithIdIsExist = this.boardWithIdIsExist(id);
@@ -66,6 +75,7 @@ public class BoardController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @ApiOperation("Get board by id")
     public BoardDto getBoardById(@PathVariable("id") Long id) {
         Board board = this.boardWithIdIsExist(id);
         return conversionService.convert(board, BoardDto.class);
@@ -74,10 +84,12 @@ public class BoardController {
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ApiOperation("Board board by id")
     public void deleteBoardById(
             @PathVariable("id") Long id
     ) {
-        this.boardWithIdIsExist(id);
+        Board board = this.boardWithIdIsExist(id);
+        taskService.deleteByBoardId(id);
         boardService.deleteById(id);
     }
 

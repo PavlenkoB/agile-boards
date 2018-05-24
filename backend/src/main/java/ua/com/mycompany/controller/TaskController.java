@@ -1,5 +1,6 @@
 package ua.com.mycompany.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping(value = "/api/task")
+@Api
 public class TaskController {
     private final TaskService taskService;
     private final ConversionService conversionService;

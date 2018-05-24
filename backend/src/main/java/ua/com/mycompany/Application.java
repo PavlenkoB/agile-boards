@@ -1,5 +1,6 @@
 package ua.com.mycompany;
 
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -12,6 +13,7 @@ import ua.com.mycompany.service.BoardService;
 
 @SpringBootApplication
 @Slf4j
+@Api(description = "Main Run")
 public class Application implements ApplicationRunner {
     private final BoardService boardService;
     private final ConversionService conversionService;

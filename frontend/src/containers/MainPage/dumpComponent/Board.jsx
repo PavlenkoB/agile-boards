@@ -2,13 +2,16 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 
+import Task from './Task';
+
 export class Board extends Component {
 
     static propTypes = {
         board: PropTypes.shape({
             id: PropTypes.number,
             name: PropTypes.string,
-            order: PropTypes.number
+            order: PropTypes.number,
+            tasks: PropTypes.array
         })
     };
 
@@ -33,13 +36,21 @@ export class Board extends Component {
             <div>
                 <p>
                     <b>Id:</b>{this.board.id}
-                </p>
-                <p>
+                    <br/>
                     <b>Name:</b>{this.board.name}
-                </p>
-                <p>
+                    <br/>
                     <b>Order:</b>{this.board.order}
                 </p>
+            </div>
+            <div className="task-list">
+                {this.board.tasks.map((task, key) =>
+                    <Task task={task} key={task.id}/>
+                )}
+            </div>
+            <div className="add-task">
+                Name:<input className="taskName"/>
+                <br/>
+                Description:<input className="taskDescription"/>
             </div>
         </div>
     };

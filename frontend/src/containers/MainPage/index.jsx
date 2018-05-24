@@ -5,7 +5,7 @@ import * as actions from "./actions";
 
 import Board from './dumpComponent/Board';
 
-import './boards.css';
+import './style/boards.scss';
 
 export class MainPage extends Component {
     componentWillMount() {

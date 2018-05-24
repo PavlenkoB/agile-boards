@@ -12,4 +12,6 @@ import java.util.List;
  */
 public interface TaskRepository extends MongoRepository<Task, Long> {
     List<Task> findByBoardId(Long id);
+
+    void deleteByBoardId(Long boardId);
 }

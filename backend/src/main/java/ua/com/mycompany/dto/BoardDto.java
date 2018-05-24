@@ -1,5 +1,6 @@
 package ua.com.mycompany.dto;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel
 public class BoardDto implements Serializable {
     private Long id;
     @NotNull

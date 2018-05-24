@@ -1,5 +1,6 @@
 package ua.com.mycompany.dto;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel(description = "Task")
 public class TaskDto implements Serializable {
     private Long id;
     private Long boardId;

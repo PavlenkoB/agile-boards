@@ -28,4 +28,6 @@ public interface TaskService {
     Task update(Task task);
 
     void deleteById(Long id);
+
+    void deleteByBoardId(Long boardId);
 }
