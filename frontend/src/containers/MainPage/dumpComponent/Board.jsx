@@ -13,15 +13,14 @@ export class Board extends Component {
             order: PropTypes.number,
             tasks: PropTypes.array
         }),
-        deleteAction: PropTypes.func,
-        updateAction: PropTypes.func
+        actions: PropTypes.shape()
     };
 
     constructor(props) {
         super(props);
         this.board = this.props.board;
-        this.deletfuncrtion = this.props.deleteAction;
-        this.updateAction = this.props.updateAction;
+        this.deletFuncrtion = this.props.actions.deleteBoard;
+        this.updateAction = this.props.actions.updateBoard;
         this.runDelete = this.runDelete.bind(this);
         this.runUpdate = this.runUpdate.bind(this);
         this.moveLeft = this.moveLeft.bind(this);
@@ -29,11 +28,11 @@ export class Board extends Component {
     }
 
     shouldComponentUpdate(newProps, nextState) {
-        console.log('newProps', newProps);
+        return true;
     }
 
     runDelete() {
-        this.deletfuncrtion(this.board);
+        this.deletFuncrtion(this.board);
     }
 
     runUpdate() {
@@ -48,6 +47,14 @@ export class Board extends Component {
     moveRight() {
         this.board.order = this.board.order + 1;
         this.runUpdate();
+    }
+
+    addNewTask() {
+        let newTask = {
+            name: this.newTaskName,
+            boardId: this.board.id,
+        }
+        // this.
     }
 
     render() {
@@ -78,9 +85,13 @@ export class Board extends Component {
                 )}
             </div>
             <div className="add-task">
-                Name:<input className="taskName"/>
+                Name:<input className="taskName" ref={(node) => {
+                this.newTaskName = node
+            }}/>
                 <br/>
                 Description:<input className="taskDescription"/>
+                <br/>
+                <button>Add</button>
             </div>
         </div>
     };

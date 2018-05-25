@@ -10,17 +10,10 @@ import './style/boards.scss';
 export class MainPage extends Component {
     componentWillMount() {
         this.props.actions.getBoardsList();
-        this.deleteThisBoard = this.deleteThisBoard.bind(this);
     }
-
-    deleteThisBoard(board) {
-        this.props.actions.deleteBoard(board);
-    }
-
 
     shouldComponentUpdate(newProps, nextState) {
-        console.log('newProps', newProps);
-        return false;
+        return true;
     }
 
     render() {
@@ -29,8 +22,7 @@ export class MainPage extends Component {
             <div className="boardsContainer">
                 {this.props.pageData.boards.map((board, index) =>
                     <Board board={board} key={board.id}
-                           deleteAction={this.deleteThisBoard}
-                           updateAction={this.props.actions.updateBoard}
+                           actions={this.props.actions}
                     />
                 )}
             </div>
