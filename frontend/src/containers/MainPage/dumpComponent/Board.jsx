@@ -21,6 +21,7 @@ export class Board extends Component {
         this.board = this.props.board;
         this.deletFuncrtion = this.props.actions.deleteBoard;
         this.updateAction = this.props.actions.updateBoard;
+        this.addTask = this.props.actions.createTask;
         this.runDelete = this.runDelete.bind(this);
         this.runUpdate = this.runUpdate.bind(this);
         this.moveLeft = this.moveLeft.bind(this);
@@ -52,9 +53,10 @@ export class Board extends Component {
     addNewTask() {
         let newTask = {
             name: this.newTaskName,
+            description: this.newTaskDescription,
             boardId: this.board.id,
+            order: this.board.tasks.length
         }
-        // this.
     }
 
     render() {
@@ -80,18 +82,24 @@ export class Board extends Component {
                 </p>
             </div>
             <div className="task-list">
-                {this.board.tasks.map((task, key) =>
-                    <Task task={task} key={task.id}/>
-                )}
-            </div>
-            <div className="add-task">
-                Name:<input className="taskName" ref={(node) => {
-                this.newTaskName = node
-            }}/>
-                <br/>
-                Description:<input className="taskDescription"/>
-                <br/>
-                <button>Add</button>
+                <div className="task-list">
+                    {this.board.tasks.map((task, key) =>
+                        <Task className="task-item" task={task} key={task.id}/>
+                    )}
+                </div>
+                <div className="add-task">
+                    Name:
+                    <input className="taskName" ref={(node) => {
+                        this.newTaskName = node
+                    }}/>
+                    <br/>
+                    Description:
+                    <input className="taskDescription" ref={(node) => {
+                        this.newTaskDescription = node
+                    }}/>
+                    <br/>
+                    <button onClick={this.addNewTask}>Add</button>
+                </div>
             </div>
         </div>
     };
