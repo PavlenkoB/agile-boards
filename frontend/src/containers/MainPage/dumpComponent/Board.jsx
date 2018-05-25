@@ -30,7 +30,12 @@ export class Board extends Component {
     }
 
     shouldComponentUpdate(newProps, nextState) {
+        console.log('this.board', this.board);
         return true;
+    }
+
+    componentDidMount() {
+        this.props.actions.getTaskForBoard(this.board);
     }
 
     runDelete() {
@@ -87,7 +92,7 @@ export class Board extends Component {
             <div className="task-list">
                 <div className="task-list">
                     {this.board.tasks.map((task, key) =>
-                        <Task className="task-item" task={task} key={task.id}/>
+                        <Task className="task-item" task={task} key={key}/>
                     )}
                 </div>
                 <div className="add-task">

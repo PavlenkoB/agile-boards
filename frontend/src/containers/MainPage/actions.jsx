@@ -20,7 +20,7 @@ export function deleteBoard(board) {
         fetchActions.deleteBoard(board).then((res) => {
             fetchActions.getBoards().then((responce) => {
                 dispatch({
-                    type: con.FETCH_BOARD_LIST_SUCCESS,
+                    type: con.DELETE_BOARD_SUCCESS,
                     taskData: responce
                 });
             });
@@ -46,7 +46,7 @@ export function createBoard(board) {
         fetchActions.createBoard(board).then((res) => {
             fetchActions.getBoards().then((responce) => {
                 dispatch({
-                    type: con.UPDATE_BOARD_SUCCESS,
+                    type: con.CREATE_BOARD_SUCCESS,
                     taskData: responce
                 });
             })
@@ -59,11 +59,23 @@ export function createTask(task) {
         fetchActions.createTask(task).then((res) => {
             fetchActions.getBoards().then((responce) => {
                 dispatch({
-                    type: con.UPDATE_BOARD_SUCCESS,
+                    type: con.CREATE_TASK_SUCCESS,
                     taskData: responce
                 });
             })
         })
     }
+}
 
+export function getTaskForBoard(board) {
+    console.log('getTaskForBoard', board);
+    return dispatch => {
+        fetchActions.getTaskForBoard(board).then((res) => {
+            dispatch({
+                type: con.FETCH_TASKS_FOR_BOARD_SUCCESS,
+                tasks: res,
+                boardId: board.id
+            });
+        })
+    }
 }

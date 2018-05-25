@@ -5,11 +5,13 @@ const initState = {
 };
 
 export default function MainReduser(state = initState, action) {
-    let taskData = action.taskData;
+
     switch (action.type) {
         case con.FETCH_BOARD_LIST_SUCCESS:
         case con.DELETE_BOARD_SUCCESS:
         case con.UPDATE_BOARD_SUCCESS:
+        case con.CREATE_TASK_SUCCESS:
+            let taskData = action.taskData;
             taskData.map((e) => {
                 e.tasks = [];
                 return e;
@@ -20,6 +22,14 @@ export default function MainReduser(state = initState, action) {
             return {
                 boards: taskData
             };
+        case con.FETCH_TASKS_FOR_BOARD_SUCCESS:
+            let newState = state;
+            newState.boards.forEach((board, i, arr) => {
+                if (board.id === action.boardId) {
+                    board.tasks = action.tasks;
+                }
+            });
+            return newState;
         default:
             return state;
     }

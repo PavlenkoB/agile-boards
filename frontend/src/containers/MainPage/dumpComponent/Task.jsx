@@ -8,7 +8,7 @@ export class Task extends Component {
             id: PropTypes.number,
             boardId: PropTypes.number,
             order: PropTypes.number,
-            name: PropTypes.number,
+            name: PropTypes.string,
             description: PropTypes.string
         })
     };
