@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import * as con from "./constants";
 import * as fetchActions from "./apiActions";
 
@@ -53,19 +52,18 @@ export function createBoard(board) {
             })
         })
     }
-
 }
 
-export function getTaskInfo(taskId) {
+export function createTask(task) {
     return dispatch => {
-        $.get('/rs/admin/tasks/' + taskId, function (taskData) {
-            dispatch({
-                type: con.FETCH_TASK_SUCCESS,
-                payload: {
-                    taskData: taskData
-                }
+        fetchActions.createTask(task).then((res) => {
+            fetchActions.getBoards().then((responce) => {
+                dispatch({
+                    type: con.UPDATE_BOARD_SUCCESS,
+                    taskData: responce
+                });
             })
         })
-    };
-}
+    }
 
+}
