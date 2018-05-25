@@ -13,33 +13,53 @@ export class Board extends Component {
             order: PropTypes.number,
             tasks: PropTypes.array
         }),
-        deleteAction: PropTypes.func
+        deleteAction: PropTypes.func,
+        updateAction: PropTypes.func
     };
-
 
     constructor(props) {
         super(props);
         this.board = this.props.board;
         this.deletfuncrtion = this.props.deleteAction;
+        this.updateAction = this.props.updateAction;
         this.runDelete = this.runDelete.bind(this);
+        this.runUpdate = this.runUpdate.bind(this);
+        this.moveLeft = this.moveLeft.bind(this);
+        this.moveRight = this.moveRight.bind(this);
+    }
+
+    shouldComponentUpdate(newProps, nextState) {
+        console.log('newProps', newProps);
     }
 
     runDelete() {
-        console.log("Delete....");
-        console.log(this);
         this.deletfuncrtion(this.board);
+    }
+
+    runUpdate() {
+        this.updateAction(this.board);
+    }
+
+    moveLeft() {
+        this.board.order = (0 < this.board.order - 1) ? this.board.order - 1 : 0;
+        this.runUpdate();
+    }
+
+    moveRight() {
+        this.board.order = this.board.order + 1;
+        this.runUpdate();
     }
 
     render() {
         return <div className="board-body">
             <div className="actions">
-                <button className="moveLeft">
+                <button className="moveLeft" onClick={this.moveLeft}>
                     <FontAwesome name="arrow-left" size="2x"/>
                 </button>
                 <button className="deleteBoard" onClick={this.runDelete}>
                     <FontAwesome name="trash" size="2x"/>
                 </button>
-                <button className="moveRight">
+                <button className="moveRight" onClick={this.moveRight}>
                     <FontAwesome name="arrow-right" size="2x"/>
                 </button>
             </div>

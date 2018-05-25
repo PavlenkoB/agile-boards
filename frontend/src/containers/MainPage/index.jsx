@@ -17,8 +17,10 @@ export class MainPage extends Component {
         this.props.actions.deleteBoard(board);
     }
 
-    componentNeedUpdate(nextState) {
-        return true;
+
+    shouldComponentUpdate(newProps, nextState) {
+        console.log('newProps', newProps);
+        return false;
     }
 
     render() {
@@ -26,7 +28,10 @@ export class MainPage extends Component {
             Some data
             <div className="boardsContainer">
                 {this.props.pageData.boards.map((board, index) =>
-                    <Board board={board} key={board.id} deleteAction={this.deleteThisBoard}/>
+                    <Board board={board} key={board.id}
+                           deleteAction={this.deleteThisBoard}
+                           updateAction={this.props.actions.updateBoard}
+                    />
                 )}
             </div>
         </div>

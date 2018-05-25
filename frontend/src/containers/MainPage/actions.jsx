@@ -17,9 +17,9 @@ export function getBoardsList() {
     };
 }
 
-export function deleteBoard(boardId) {
+export function deleteBoard(board) {
     return dispatch => {
-        fetchActions.deleteBoard(boardId).then((res) => {
+        fetchActions.deleteBoard(board).then((res) => {
             fetchActions.getBoards().then((responce) => {
                 dispatch({
                     type: con.FETCH_BOARD_LIST_SUCCESS,
@@ -29,6 +29,20 @@ export function deleteBoard(boardId) {
         });
     }
 }
+
+export function updateBoard(board) {
+    return dispatch => {
+        fetchActions.updateBoard(board).then((res) => {
+            fetchActions.getBoards().then((responce) => {
+                dispatch({
+                    type: con.UPDATE_BOARD_SUCCESS,
+                    taskData: responce
+                });
+            });
+        });
+    }
+}
+
 
 
 export function getTaskInfo(taskId) {

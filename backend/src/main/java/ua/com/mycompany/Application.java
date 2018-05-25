@@ -31,6 +31,6 @@ public class Application implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         boardService.create(new Board(null, 0L, "test", null));
-
+        boardService.create(new Board(null, 0L, "test2", null));
     }
 }

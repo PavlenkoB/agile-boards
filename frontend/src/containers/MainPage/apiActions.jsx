@@ -18,13 +18,13 @@ export const createBoard = function (newBoard) {
     return fetch("/api/board", {
         method: 'POST',
         headers: headers_template,
-        body: newBoard
+        body: JSON.stringify(newBoard)
     }).then(retJson);
 };
 export const updateBoard = function (updateBoard) {
-    return fetch("/api/board" + updateBoard.id, {
+    return fetch("/api/board/" + updateBoard.id, {
         method: 'PATCH',
         headers: headers_template,
-        body: updateBoard
+        body: JSON.stringify(updateBoard)
     }).then(retJson);
 };
