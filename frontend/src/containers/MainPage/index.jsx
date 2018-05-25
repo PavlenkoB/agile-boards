@@ -10,12 +10,11 @@ import './style/boards.scss';
 export class MainPage extends Component {
     componentWillMount() {
         this.props.actions.getBoardsList();
+        this.deleteThisBoard = this.deleteThisBoard.bind(this);
     }
 
     deleteThisBoard(id) {
-        console.log("Delete....", id);
-        console.log("this", this);
-        // this.props.actions.deleteBoard(id);
+        this.props.actions.deleteBoard(id);
     }
 
     componentNeedUpdate(nextState) {
@@ -23,12 +22,11 @@ export class MainPage extends Component {
     }
 
     render() {
-        console.log(this.props);
         return <div className="main-page">
             Some data
             <div className="boardsContainer">
                 {this.props.pageData.boards.map((board, index) =>
-                    <Board board={board} key={index} deleteAction={this.deleteThisBoard}/>
+                    <Board board={board} key={board.id} deleteAction={this.deleteThisBoard}/>
                 )}
             </div>
         </div>

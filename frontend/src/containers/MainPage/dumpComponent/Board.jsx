@@ -16,17 +16,18 @@ export class Board extends Component {
         deleteAction: PropTypes.func
     };
 
+
     constructor(props) {
         super(props);
         this.board = this.props.board;
-        this.deleteFunction = this.props.deleteAction;
+        this.deletfuncrtion = this.props.deleteAction;
         this.runDelete = this.runDelete.bind(this);
     }
 
     runDelete() {
         console.log("Delete....");
         console.log(this);
-        this.props.deleteFunction(this.board.id);
+        this.deletfuncrtion(this.board.id);
     }
 
     render() {

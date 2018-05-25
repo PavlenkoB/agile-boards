@@ -1,37 +1,31 @@
 import $ from 'jquery';
-
 import * as con from "./constants";
+import * as fetchActions from "./apiActions";
+
+
+let headers_template = {'Content-type': 'application/json'};
+
 
 export function getBoardsList() {
     return dispatch => {
-        $.ajax({
-            url: '/api/board',
-            type: 'GET',
-            contentType: 'application/json',
-            dataType: 'json'
-        }).done(function (taskData) {
+        fetchActions.getBoards().then((res) => {
             dispatch({
                 type: con.FETCH_BOARD_LIST_SUCCESS,
-                payload: {
-                    taskData: taskData
-                }
-            })
+                taskData: res
+            });
         });
     };
 }
 
 export function deleteBoard(boardId) {
     return dispatch => {
-        $.ajax({
-            url: '/api/board/' + boardId,
-            type: 'DELETE',
-            contentType: 'application/json',
-            dataType: 'json'
-        }).done(function () {
-            dispatch({
-                type: con.DELETE_BOARD_SUCCESS,
+        fetchActions.deleteBoard(boardId).then((res) => {
+            fetchActions.getBoards().then((responce) => {
+                dispatch({
+                    type: con.FETCH_BOARD_LIST_SUCCESS,
+                    taskData: responce
+                });
             });
-            getBoardsList();
         });
     }
 }
