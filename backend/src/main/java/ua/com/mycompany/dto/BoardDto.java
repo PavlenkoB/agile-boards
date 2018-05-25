@@ -23,7 +23,6 @@ import java.io.Serializable;
 @ApiModel
 public class BoardDto implements Serializable {
     private Long id;
-    @NotNull
     @Min(value = 0, message = "Cant be lover zero")
     private Long order;
     @NotNull

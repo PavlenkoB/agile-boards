@@ -16,8 +16,22 @@ export class MainPage extends Component {
         return true;
     }
 
+
+    constructor(props) {
+        super(props);
+        this.createNewTask = this.createNewTask.bind(this);
+    }
+
+    createNewTask() {
+        let newBoard = {
+            name: this.newBoardName.value
+        };
+        this.props.actions.createBoard(newBoard);
+        this.newBoardName.value = '';
+    }
+
     render() {
-        return <div className="main-page">
+        return <div className="app-div">
             Some data
             <div className="boardsContainer">
                 {this.props.pageData.boards.map((board, index) =>
@@ -26,8 +40,16 @@ export class MainPage extends Component {
                     />
                 )}
             </div>
+            <div className="add-new-board">
+                Add new Board:
+                <input ref={(node) => {
+                    this.newBoardName = node
+                }}/>
+                <button onClick={this.createNewTask}>Create</button>
+            </div>
         </div>
     };
+
 };
 
 function mapStateToProps(state) {

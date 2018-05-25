@@ -5,7 +5,6 @@ import * as fetchActions from "./apiActions";
 
 let headers_template = {'Content-type': 'application/json'};
 
-
 export function getBoardsList() {
     return dispatch => {
         fetchActions.getBoards().then((res) => {
@@ -43,7 +42,19 @@ export function updateBoard(board) {
     }
 }
 
+export function createBoard(board) {
+    return dispatch => {
+        fetchActions.createBoard(board).then((res) => {
+            fetchActions.getBoards().then((responce) => {
+                dispatch({
+                    type: con.UPDATE_BOARD_SUCCESS,
+                    taskData: responce
+                });
+            })
+        })
+    }
 
+}
 
 export function getTaskInfo(taskId) {
     return dispatch => {

@@ -13,18 +13,14 @@ export default () => (
                     Boards: <FontAwesome name='trello' size="2x"/>
                 </b>
                 <div className="container-fluid">
-                    <div className="header">
-                    </div>
-                    <div className="row main-content">
-                        <div className="col-md-2 menu-bar">
+                    <div className="main-content">
+                        <div className="menu-bar">
                         </div>
-                        <div className="col-md-10 content-container">
+                        <div className="content-container">
                             <Switch>
                                 <Route exact path='/' component={MainPage}/>
                             </Switch>
                         </div>
-                    </div>
-                    <div className="footer">
                     </div>
                 </div>
             </div>

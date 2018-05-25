@@ -26,6 +26,7 @@ export class Board extends Component {
         this.runUpdate = this.runUpdate.bind(this);
         this.moveLeft = this.moveLeft.bind(this);
         this.moveRight = this.moveRight.bind(this);
+        this.addNewTask = this.addNewTask.bind(this);
     }
 
     shouldComponentUpdate(newProps, nextState) {
@@ -50,13 +51,15 @@ export class Board extends Component {
         this.runUpdate();
     }
 
+
     addNewTask() {
         let newTask = {
-            name: this.newTaskName,
-            description: this.newTaskDescription,
+            name: this.newTaskName.value,
+            description: this.newTaskDescription.value,
             boardId: this.board.id,
             order: this.board.tasks.length
-        }
+        };
+        this.addTask(newTask);
     }
 
     render() {

@@ -20,6 +20,8 @@ public class BoardDtoConverter implements Converter<BoardDto, Board> {
         }
         if (boardDto.getOrder() != null) {
             board.setOrder(boardDto.getOrder());
+        } else {
+            board.setOrder(0L);
         }
         board.setName(boardDto.getName());
         return board;
