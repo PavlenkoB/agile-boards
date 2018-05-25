@@ -27,7 +27,7 @@ export class Board extends Component {
     runDelete() {
         console.log("Delete....");
         console.log(this);
-        this.deletfuncrtion(this.board.id);
+        this.deletfuncrtion(this.board);
     }
 
     render() {

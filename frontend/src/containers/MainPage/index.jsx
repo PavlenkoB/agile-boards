@@ -13,8 +13,8 @@ export class MainPage extends Component {
         this.deleteThisBoard = this.deleteThisBoard.bind(this);
     }
 
-    deleteThisBoard(id) {
-        this.props.actions.deleteBoard(id);
+    deleteThisBoard(board) {
+        this.props.actions.deleteBoard(board);
     }
 
     componentNeedUpdate(nextState) {
